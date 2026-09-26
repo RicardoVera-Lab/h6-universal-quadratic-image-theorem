@@ -1,0 +1,22 @@
+name: Verify H6 certificate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Run exact H6 verifier
+        run: |
+          python certificate/verify_h6_lower25_cleanroom.py certificate/h6_exact_profile_witnesses.txt
