@@ -2,23 +2,33 @@
 
 > **CIEC LAB mathematical discovery — a computer-assisted theorem that pushes guaranteed quadratic image containment beyond the apparent 22-dimensional interpolation ceiling.**
 
+## Preprint v1.0
+
+**Ricardo Vera — CIEC LAB**
+
+**Universal Quadratic Image Containment over F₂: A Computer-Assisted Proof that h(6) ≥ 25**
+
+[Read the preprint PDF](paper/Vera_2026_Universal_Quadratic_Image_Containment_h6_ge25_Preprint_v1.pdf)
+
+Publication status: **preprint**. The result has passed internal clean-room hardening and a second internal checker. External third-party mathematical reproduction and journal peer review are still open.
+
+---
+
 ## 22 apparent degrees of freedom. 24 universally guaranteed targets.
 
 Let
-[
-q:mathbb F_2^6	omathbb F_2^{12}
-]
+
+**q : F₂⁶ → F₂¹²**
+
 range over maps whose 12 coordinate functions have algebraic degree at most 2.
 
 H6 proves:
 
-> **Every subset (Hsubseteqmathbb F_2^{12}) with (|H|le 24) is contained in the image of at least one such quadratic map.**
+> **Every subset H ⊆ F₂¹² with |H| ≤ 24 is contained in the image of at least one such quadratic map.**
 
 Equivalently,
 
-[
-oxed{h(6)ge 25}.
-]
+**h(6) ≥ 25.**
 
 This is a **positive computer-assisted theorem**, not a failed search, heuristic signal or numerical guess.
 
@@ -28,9 +38,7 @@ This is a **positive computer-assisted theorem**, not a failed search, heuristic
 
 The scalar space of Boolean polynomials of degree at most 2 in six variables has dimension
 
-[
-1+6+inom62=22.
-]
+**1 + 6 + C(6,2) = 22.**
 
 If preimages are fixed in advance, 22 is the natural interpolation barrier.
 
@@ -41,7 +49,7 @@ The mechanism is different:
 > **adaptive placement of unavoidable dependency relations inside dependency relations the target set already possesses.**
 
 For 24 selected evaluation points, two relations are unavoidable because the evaluation space has rank 22.  
-For 24 targets in (mathbb F_2^{12}), the target kernel has dimension at least 12.
+For 24 targets in F₂¹², the target kernel has dimension at least 12.
 
 The proof shows that the preimages can be chosen so that the two unavoidable evaluation relations are legal target relations.
 
@@ -53,7 +61,7 @@ See [Why 22 becomes 24](proof/04_TWO_POINT_EXCESS_EXPLANATION.md).
 
 ## Executive signal
 
-This repository is not valuable to CIEC LAB because every executive needs a theorem about (mathbb F_2).
+This repository is not valuable to CIEC LAB because every executive needs a theorem about F₂.
 
 It is valuable because it demonstrates a harder capability:
 
@@ -79,27 +87,17 @@ See [Executive Signal](report/EXECUTIVE_SIGNAL.md).
 
 The theorem is equivalent to an adaptive evaluation-geometry statement.
 
-Define the degree-(le2) evaluation embedding
+Define the degree-≤2 evaluation embedding
 
-[
-phi_2:mathbb F_2^6	omathbb F_2^{22}.
-]
+**φ₂ : F₂⁶ → F₂²².**
 
-For every (tle24) and every injective target matrix
-[
-Minmathbb F_2^{12	imes t},
-]
-there exist (t) distinct points (Xsubsetmathbb F_2^6) such that, for the evaluation matrix (V_X),
+For every **t ≤ 24** and every injective target matrix **M ∈ F₂^(12×t)**, there exist **t** distinct points **X ⊂ F₂⁶** such that, for the evaluation matrix **V_X**,
 
-[
-ker(V_X)subseteqker(M).
-]
+**ker(V_X) ⊆ ker(M).**
 
-Equivalently, there exists a linear map (T:mathbb F_2^{22}	omathbb F_2^{12}) satisfying
+Equivalently, there exists a linear map **T : F₂²² → F₂¹²** satisfying
 
-[
-M=TV_X.
-]
+**M = T V_X.**
 
 Full statement: [proof/02_THEOREM_STATEMENT.md](proof/02_THEOREM_STATEMENT.md)  
 Full proof: [proof/03_PROOF_FROM_FIRST_PRINCIPLES.md](proof/03_PROOF_FROM_FIRST_PRINCIPLES.md)
@@ -116,8 +114,8 @@ The proof combines human mathematics with finite exact certification:
 | Target-kernel reduction | Human proof |
 | Dangerous 2D dependency profiles | **46 exact profiles** |
 | Exact-kernel realizations | **45 certified witness profiles** |
-| Unique exceptional profile | ((12,12,24)) |
-| Delsarte/Krawtchouk closure | **9 exact rational certificates**, all (>640) |
+| Unique exceptional profile | **(12,12,24)** |
+| Delsarte/Krawtchouk closure | **9 exact rational certificates**, all **>640** |
 | Large sum-free structure | Published theorem |
 | Safe-weight code escape route | **0 MacWilliams survivors** |
 | All-one exceptional branch | Closed separately |
@@ -174,16 +172,16 @@ See [Adversarial Attacks](proof/07_ADVERSARIAL_ATTACKS.md).
 
 **Mathematical status:** `CONFIRMED_WITHIN_SCOPE` inside the frozen proof/certificate chain.
 
-**Targeted prior-art status:** no equivalent statement for (h(6)ge25) was located in the dedicated search across quadratic maps, vectorial Boolean functions, Reed–Muller/interpolation language and related formulations.
+**Targeted prior-art status:** no equivalent statement for **h(6) ≥ 25** was located in the dedicated search across quadratic maps, vectorial Boolean functions, Reed–Muller/interpolation language and related formulations.
 
 This repository therefore presents H6 as a **CIEC LAB mathematical discovery and computer-assisted theorem**.
 
 It does **not** claim:
 
 - an exhaustive first-in-history priority certification;
-- (h(6)=25);
-- (h(6)ge26);
-- a general theorem for every (n);
+- **h(6) = 25**;
+- **h(6) ≥ 26**;
+- a general theorem for every **n**;
 - an immediate engineering application.
 
 See [Prior-Art & Claim Boundary](docs/PRIOR_ART_STATUS.md) and [Status](STATUS.md).
@@ -192,15 +190,13 @@ See [Prior-Art & Claim Boundary](docs/PRIOR_ART_STATUS.md) and [Status](STATUS.m
 
 ## Why the next question matters
 
-H6 raises a larger question:
+For general **n**, the scalar quadratic space has dimension
 
-[
-D_n=1+n+inom n2.
-]
+**Dₙ = 1 + n + C(n,2).**
 
-For (n=6), (D_6=22), yet universal containment reaches at least (24=D_6+2).
+For **n = 6**, **D₆ = 22**, yet universal containment reaches at least **24 = D₆ + 2**.
 
-The next research program is not “run the same brute force at larger (n).”
+The next research program is not “run the same brute force at larger n.”
 
 It is:
 
@@ -224,6 +220,9 @@ See [Public Disclosure Boundary](PUBLIC_DISCLOSURE_BOUNDARY.md).
 
 ## Repository map
 
+- [Preprint v1.0 PDF](paper/Vera_2026_Universal_Quadratic_Image_Containment_h6_ge25_Preprint_v1.pdf)
+- [Release notes v1.0.0](RELEASE_NOTES_v1.0.0.md)
+- [Zenodo deposit metadata](ZENODO_DEPOSIT_METADATA.md)
 - [Plain-language explanation](docs/PLAIN_LANGUAGE.md)
 - [Theorem statement](proof/02_THEOREM_STATEMENT.md)
 - [Evaluation equivalence](proof/01_RM2_EVALUATION_EQUIVALENCE.md)
