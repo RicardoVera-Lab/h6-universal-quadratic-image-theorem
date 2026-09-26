@@ -1,0 +1,31 @@
+name: Publish H6 v1.0.0 Release
+
+on:
+  push:
+    branches:
+      - release-v1.0.0
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen release branch
+        uses: actions/checkout@v4
+
+      - name: Verify public certificate
+        run: |
+          python certificate/verify_h6_lower25_cleanroom.py certificate/h6_exact_profile_witnesses.txt
+
+      - name: Create GitHub release and attach preprint
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v1.0.0 >/dev/null 2>&1; then
+            echo "Release v1.0.0 already exists; leaving it unchanged."
+            exit 0
+          fi
+
+          gh release create v1.0.0             "paper/Vera_2026_Universal_Quadratic_Image_Containment_h6_ge25_Preprint_v1.pdf#H6 Preprint v1.0 (PDF)"             --target "$GITHUB_SHA"             --title "H6 v1.0.0 — Universal Quadratic Image Theorem"             --notes-file RELEASE_NOTES_v1.0.0.md
