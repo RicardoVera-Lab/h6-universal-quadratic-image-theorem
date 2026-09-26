@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use or discuss H6, please cite this repository."
+title: "H6 — Universal Quadratic Image Theorem"
+type: software
+authors:
+  - family-names: Vera
+    given-names: Ricardo
+version: 1.0.0
+date-released: 2026-09-26
+abstract: >-
+  A CIEC LAB computer-assisted mathematical result proving that every subset
+  H of F_2^12 with cardinality at most 24 is contained in the image of some
+  coordinatewise algebraic-degree-at-most-2 map q:F_2^6 -> F_2^12.
+  Equivalently, h(6) >= 25. The public artifact includes a human-readable
+  proof architecture, exact-kernel witness corpus, adversarial checks and
+  a clean-room exact verifier.
+keywords:
+  - computer-assisted theorem
+  - finite geometry
+  - coding theory
+  - Reed-Muller
+  - Boolean functions
+  - quadratic maps
+  - additive combinatorics
+  - reproducible mathematics
+  - CIEC LAB
