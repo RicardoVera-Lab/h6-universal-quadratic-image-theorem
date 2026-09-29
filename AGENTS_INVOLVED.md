@@ -1,11 +1,9 @@
 # Research System
 
-H6 was produced inside the CIEC LAB research architecture.
+This work was produced inside CIEC LAB's proprietary research architecture.
 
-Publicly named research roles involved across the H6 program include:
+The public repository documents the research question, claims, evidence, verification paths, limitations and final status needed to evaluate the public result.
 
-**FORGE Ω · ALETHEIA Ω · OSINTEGA Ω · INVENTOR**
-
-The public repository documents results and proof evidence, not operational architecture.
+Internal role names, orchestration, prompts, routing logic, thresholds, handoff formats and decision machinery are intentionally not part of the public evidence surface.
 
 > **Public evidence. Private machinery.**
