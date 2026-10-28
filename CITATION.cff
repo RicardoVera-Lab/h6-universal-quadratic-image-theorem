@@ -5,8 +5,9 @@ type: software
 authors:
   - family-names: Vera
     given-names: Ricardo
-version: 1.0.0
-date-released: 2026-09-26
+version: 1.0.1
+date-released: 2026-10-28
+url: "https://github.com/RicardoVera-Lab/h6-universal-quadratic-image-theorem/releases/tag/v1.0.1"
 abstract: >-
   A CIEC LAB computer-assisted mathematical result proving that every subset
   H of F_2^12 with cardinality at most 24 is contained in the image of some

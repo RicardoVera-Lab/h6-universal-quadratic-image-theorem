@@ -17,6 +17,9 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Verify public distribution integrity
+        run: sha256sum --strict --check reproducibility/PUBLIC_MANIFEST_SHA256.txt
+
       - name: Run exact H6 verifier
         run: |
           python certificate/verify_h6_lower25_cleanroom.py certificate/h6_exact_profile_witnesses.txt

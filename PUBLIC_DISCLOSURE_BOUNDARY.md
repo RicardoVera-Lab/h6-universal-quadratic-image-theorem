@@ -28,3 +28,7 @@ A second internal checker is documented as an independence control; the public a
 > **Public evidence. Private machinery.**
 
 The objective is to make the claim auditable without making CIEC LAB reproducible as an operating system.
+
+## Publication versions
+
+The current distribution excludes internal role names and internal-package manifests. This boundary describes the files in the current snapshot. Earlier commits, tags and release archives remain historical records and may contain earlier disclosures. Publishing a corrected snapshot does not erase Git history or previously downloaded copies.

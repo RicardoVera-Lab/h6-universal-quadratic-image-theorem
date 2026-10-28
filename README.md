@@ -10,6 +10,10 @@
 
 [Read the preprint PDF](paper/Vera_2026_Universal_Quadratic_Image_Containment_h6_ge25_Preprint_v1.pdf)
 
+[Public distribution v1.0.1](https://github.com/RicardoVera-Lab/h6-universal-quadratic-image-theorem/releases/tag/v1.0.1) · [SHA-256 manifest](reproducibility/PUBLIC_MANIFEST_SHA256.txt) · [Español](README_ES.md)
+
+Distribution v1.0.1 updates publication packaging and documentation. The preprint remains v1.0; its PDF, mathematical claim, verifier and witness corpus are unchanged.
+
 Publication status: **preprint**. The result has passed internal clean-room hardening and a second internal checker. External third-party mathematical reproduction and journal peer review are still open.
 
 ---
@@ -221,7 +225,7 @@ See [Public Disclosure Boundary](PUBLIC_DISCLOSURE_BOUNDARY.md).
 ## Repository map
 
 - [Preprint v1.0 PDF](paper/Vera_2026_Universal_Quadratic_Image_Containment_h6_ge25_Preprint_v1.pdf)
-- [Release notes v1.0.0](RELEASE_NOTES_v1.0.0.md)
+- [Release notes v1.0.1](RELEASE_NOTES_v1.0.1.md)
 - [Zenodo deposit metadata](ZENODO_DEPOSIT_METADATA.md)
 - [Plain-language explanation](docs/PLAIN_LANGUAGE.md)
 - [Theorem statement](proof/02_THEOREM_STATEMENT.md)

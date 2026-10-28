@@ -13,7 +13,7 @@ From the repository root:
 python certificate/verify_h6_lower25_cleanroom.py certificate/h6_exact_profile_witnesses.txt
 ```
 
-Expected final line:
+Expected verdict (followed by the external-dependency notice):
 
 ```text
 INTERNAL_COMPUTATIONAL_VERDICT=PASS
@@ -39,4 +39,21 @@ The two implementations shared the witness dataset and Delsarte coefficient data
 
 ## Integrity
 
-The original publication-hardening capsule hashes are preserved in [ORIGINAL_MANIFEST_SHA256.txt](ORIGINAL_MANIFEST_SHA256.txt).
+The [public SHA-256 manifest](PUBLIC_MANIFEST_SHA256.txt) covers every tracked file in this distribution except the manifest itself. Paths are relative to the repository root. It describes the public files actually supplied, not a separate internal research package.
+
+From the repository root, verify the downloaded files before running the certificate:
+
+```bash
+sha256sum --strict --check reproducibility/PUBLIC_MANIFEST_SHA256.txt
+```
+
+Every entry must report `OK`. GitHub Actions runs this integrity check as well as the exact certificate verifier. Matching hashes establish file consistency, not independent mathematical validation.
+
+Maintainers must regenerate the manifest after changing public files. Stage the intended distribution first, then run from the repository root:
+
+```bash
+git ls-files -z -- ':!:reproducibility/PUBLIC_MANIFEST_SHA256.txt' | LC_ALL=C sort -z | xargs -0 sha256sum > reproducibility/PUBLIC_MANIFEST_SHA256.txt
+git add reproducibility/PUBLIC_MANIFEST_SHA256.txt
+```
+
+Use the manifest from the same commit or release as the files being checked. Older releases and Git history preserve earlier publication states; a new manifest does not remove those historical copies.

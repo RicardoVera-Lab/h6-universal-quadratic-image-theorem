@@ -1,0 +1,72 @@
+name: Publish H6 v1.0.1 Release
+
+on:
+  push:
+    branches:
+      - release-v1.0.1
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-h6-v1.0.1
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen release branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Verify public distribution and certificate
+        run: |
+          sha256sum --strict --check reproducibility/PUBLIC_MANIFEST_SHA256.txt
+          python certificate/verify_h6_lower25_cleanroom.py certificate/h6_exact_profile_witnesses.txt
+
+      - name: Build public snapshot archive
+        run: git archive --format=tar.gz --prefix=h6-v1.0.1/ --output="$RUNNER_TEMP/h6-v1.0.1-public-source.tar.gz" HEAD
+
+      - name: Publish maintenance release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v1.0.1 >/dev/null 2>&1; then
+            echo "Release v1.0.1 already exists; leaving its files unchanged."
+          else
+            gh release create v1.0.1 \
+              "paper/Vera_2026_Universal_Quadratic_Image_Containment_h6_ge25_Preprint_v1.pdf#H6 Preprint v1.0 (unchanged PDF)" \
+              "reproducibility/PUBLIC_MANIFEST_SHA256.txt#Public distribution SHA-256 manifest" \
+              "$RUNNER_TEMP/h6-v1.0.1-public-source.tar.gz#Public source snapshot" \
+              --target "$GITHUB_SHA" \
+              --title "H6 v1.0.1 - Public distribution maintenance" \
+              --notes-file RELEASE_NOTES_v1.0.1.md \
+              --latest
+          fi
+
+      - name: Mark the earlier distribution as superseded
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view v1.0.0 --json body --jq .body > "$RUNNER_TEMP/h6-v1.0.0-notes.md"
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          path = Path(os.environ["RUNNER_TEMP"]) / "h6-v1.0.0-notes.md"
+          body = path.read_text()
+          notice = (
+              "> **Public distribution superseded by v1.0.1.** "
+              "Use [v1.0.1](https://github.com/RicardoVera-Lab/h6-universal-quadratic-image-theorem/releases/tag/v1.0.1) "
+              "for the current public snapshot and matching integrity manifest. "
+              "This older tag and its archives preserve earlier publication content. "
+              "The mathematical claim and preprint v1.0 PDF are unchanged.\n\n"
+          )
+          if not body.startswith("> **Public distribution superseded by v1.0.1.**"):
+              path.write_text(notice + body)
+          PY
+          gh release edit v1.0.0 --latest=false --notes-file "$RUNNER_TEMP/h6-v1.0.0-notes.md"
